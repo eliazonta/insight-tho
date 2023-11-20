@@ -19,9 +19,12 @@
 - [WIP] Set budget goals and receive notifications when exceeded.
 
 ## Screenshots
+|Home Screen |New Transaction|
+|--|--|
+| ![homescreen](assets/homescreen.png) | ![newTransaction](assets/newTransaction.png) |
 
-![homescreen](assets/homescreen.png)
-![homescreen](assets/newTransaction.png)
+
+
 
 ## Installation
 
