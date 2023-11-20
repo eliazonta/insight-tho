@@ -7,26 +7,12 @@ class GoogleSheetsApi {
     await dotenv.load(fileName: '/.env');
   }
   // create credentials
-  static const _credentials =r'''
-{
-  "type": "service_account",
-  "project_id": "mmoney-405120",
-  "private_key_id": "6ee426e88d3b52710fe3597388e17822726cf220",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhO5araAv00AGh\niJP5b3H7cuMeaPSq2/oCulj8uF66QL1gdlWgB1436wwVTyXU2PyOQvH47tT7CyKK\nPx2/q6+XmaNKAd9FGaBwE9BVkrIz1KmZ4pfY4pkexWWWWf4x2Th7j/g+1pr0tMSF\nqAFAHzgyT6pGaLeMoCQtczDlXgZeWOJ+Z8kw61MzLF46P8QbIOSEg/MiedjZ9Tti\nCNKzBMlhzCHC+cYQIIGIOxWKDXdClkx7tKC8f8VVGKiskVgFzUU0C1G14C+qR7lI\no6axn/oKknSVuTFP09egVI7r8K733xcmQtEuzTkCh9U7fkcwc+cs6pQN1ToCekq2\nrNJcWbXbAgMBAAECggEAAep9WiDs9Ryt3t9oDtelWxO7nd8bsbZkVpCaQDAbUi9J\nzR/Ek7NsWEJuHGJLepeL8nPcVhdGBYqvNQjbam199Wavrmn8qbxRkpKAk7HHRUya\nUr5MN2KaFdptBk3mrSrhYZ+0Z2hw8gL1pwNqW07IrhjiZG3wncgg9qgDsvfNSxEn\naC8lZqblcw6akgrJAQwZ1zXLunmji2NSqHU45fKPkB2JRZ4PzOzalt1JSbC3Islh\nyzKS8EnWGu2+V+1Ydupa99/I3yasxdB2HCu2BB8GUWW/RSB0JeR3n+XbEBrQAka8\nmYLTRlRb0u+rPk3d0mfTLB/EMBW+Pw0FD8hZ0bA41QKBgQD/pR8966Wy7QkBiR7/\nlXGTSsCBh2F6XcHyWrCTCEETqHEE8XMwmGoCt4ODgJ3rGq4zVUqMeoXd8BaP4izP\nip2mIwWHj/X7vik5qV+lEqvcG+hbqJvD5gKy1GwVHsyXhPPgXscgjikBqOFHCuKC\nIPbPnrE7WqCBe/t53xYZw03aBQKBgQDhi6fJlX6E+TLqg/a69MLiatWcL7R8UgP3\nn2R7vkyLZby+J3idvTWvY7dFXMcagTYfxZXemGhjfAmMbcdPMRvt8Tjgcs7qdNni\nSbVXVmHkVt8Opvw9RMyLQijH4dyiiySrh7CYcuP5OUfhFieJPZHzErqyFNDsgj2P\nCekZeDH2XwKBgQDs5dwUqlkLfKJ63NFv8NGlt4C6x3SqS1XduvKj3eNITzAkb4ba\nAnNCf0KMytQMONYy1ZfWo/eHWePeg64YyRAcE5odLGe7WFWljHIIa0v9FZN11MI7\nf9sCUtyxma/nvRmt0sZeQb54PkI8bjbGdbuhXCJKqUnRk83O+s7lItny7QKBgQDY\npxcIi4KZ5uqi3RpfYgfmCGuieSytEvdeoIycVSMf8B1Kp420L/Fmxalhhop3ClFc\nWabpyIrVrWtaqoT+rBTBDqrs5zudeZtmRBleiMrF1TC02XCIxhKZXnbf8jTHKlOS\nNWhMOGiGmSBTtb1Klosg7AfMUjSSS1UoloOEBLIxjwKBgHL6ocdRRGzthA4KLc3M\nnQoc+qDOyNpid0ScW7RDeHZuZ+O8pPWRq422m/Kms85LcaJnq2QaWdtJgpkpFL2Q\natJbpHfAivTLQlzhctJSHlcv6ElTUF0+/OVLNQMn0O6a1vDAEC163qiHmteyazqe\n2E8WikWYoiThu80J2Pso+yg2\n-----END PRIVATE KEY-----\n",
-  "client_email": "mmoney@mmoney-405120.iam.gserviceaccount.com",
-  "client_id": "110581937430588399082",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mmoney%40mmoney-405120.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}
-''';
+  static final _credentials = dotenv.env['CREDENTIALS'] ?? "SECRET_CREDENTIALS";
   
   // dotenv.env['SPREADSHEET_ID'] ?? "YOUR_SECRET_CREDENTIALS";
 
   // set up & connect to the spreadsheet
-  static const _spreadsheetId = "1XkAR0nlYIzqS9nh7ntWfM6JSXcYggVMhiKcLU5YsJ4I";
+  static final _spreadsheetId = dotenv.env['SPREADSHEET_ID'] ?? "YOUR_SECRET_CREDENTIALS";
   // dotenv.env['CREDENTIALS'] ?? 'YOUR_SPREADSHEET_ID';
   static final _gsheets = GSheets(_credentials);
   static Worksheet? _worksheet;
